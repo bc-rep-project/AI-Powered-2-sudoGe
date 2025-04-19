@@ -5,7 +5,7 @@ from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 
 from api.core.config import Settings
-from api.routers import movies, interactions, recommendations
+from api.routers import movies, interactions, recommendations, auth
 
 app = FastAPI()
 
@@ -26,6 +26,7 @@ app.add_middleware(
 app.include_router(movies.router)
 app.include_router(interactions.router)
 app.include_router(recommendations.router)
+app.include_router(auth.router)
 
 
 @app.get("/health")
